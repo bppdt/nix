@@ -2,6 +2,8 @@ source common.sh
 
 clearStore
 
+enableFeatures mounted-ssh-store
+
 # It tests that it should not build the good derivation without the --keep-going flag
 (! nix-build ./mounted-ssh-keep-going.nix \
   --out-link $TEST_ROOT/result-from-mounted-remote \
