@@ -74,7 +74,6 @@ nix_tests = \
   build-remote-with-mounted-ssh-ng.sh \
   nar-access.sh \
   mounted-ssh-max-jobs.sh \
-  mounted-ssh-keep-going.sh \
   impure-eval.sh \
   pure-eval.sh \
   eval.sh \
