@@ -221,6 +221,10 @@ public:
         conn.processStderr();
         return readString(conn->from);
     }
+
+    void setOptions(RemoteStore::Connection & conn) override {
+        return RemoteStore::setOptions(conn);
+    }
 };
 
 ref<RemoteStore::Connection> SSHStore::openConnection()
