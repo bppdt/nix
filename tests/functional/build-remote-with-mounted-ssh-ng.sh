@@ -1,17 +1,12 @@
 source common.sh
 
-requireSandboxSupport
-[[ $busybox =~ busybox ]] || skipTest "no busybox"
-
 enableFeatures mounted-ssh-store
 
 nix build -Lvf simple.nix \
-  --arg busybox $busybox \
   --out-link $TEST_ROOT/result-from-remote \
   --store mounted-ssh-ng://localhost
 
 nix build -Lvf simple.nix \
-  --arg busybox $busybox \
   --out-link $TEST_ROOT/result-from-remote-new-cli \
   --store 'mounted-ssh-ng://localhost?remote-program=nix daemon'
 
