@@ -19,4 +19,5 @@ nix build -Lvf simple.nix \
 # to create out links (permanent gc roots) is the distinguishing feature of
 # the mounted-ssh-ng store.
 cat $TEST_ROOT/result-from-remote/hello | grepQuiet 'Hello World!'
-cat $TEST_ROOT/result-from-remote-new-cli/hello | grepQuiet 'Hello World!'
+(cat $TEST_ROOT/result-from-remote-new-cli/hello | grepQuiet 'Hello World!') || \
+fail "PROVE"
