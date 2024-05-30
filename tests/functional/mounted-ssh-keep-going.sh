@@ -2,10 +2,9 @@ source common.sh
 
 clearStore
 
-enableFeatures mounted-ssh-store
-
 # It tests that it should not build the good derivation without the --keep-going flag
 (! nix-build ./mounted-ssh-keep-going.nix \
+  --extra-experimental-features mounted-ssh-store \
   --out-link $TEST_ROOT/result-from-mounted-remote \
   --store 'mounted-ssh-ng://localhost')
 
@@ -14,6 +13,7 @@ enableFeatures mounted-ssh-store
 
 # It tests that it should build the good derivation as we have the --keep-going flag
 (! nix-build ./mounted-ssh-keep-going.nix --keep-going \
+  --extra-experimental-features mounted-ssh-store \
   --out-link $TEST_ROOT/result-from-mounted-remote-new \
   --store 'mounted-ssh-ng://localhost')
 
