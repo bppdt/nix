@@ -6,7 +6,7 @@ requireSandboxSupport
 enableFeatures mounted-ssh-store
 
 # It tests that it should not build the good derivation without the --keep-going flag
-(! nix-build -Lvf ./mounted-ssh-keep-going.nix \
+(! nix-build ./mounted-ssh-keep-going.nix \
   --extra-experimental-features mounted-ssh-store \
   --arg busybox $busybox \
   --out-link $TEST_ROOT/result-from-mounted-remote \
@@ -16,7 +16,7 @@ enableFeatures mounted-ssh-store
   fail "Shouldn't have built because one derivation is failing"
 
 # It tests that it should build the good derivation as we have the --keep-going flag
-(! nix-build -Lvf ./mounted-ssh-keep-going.nix \
+(! nix-build ./mounted-ssh-keep-going.nix \
   --extra-experimental-features mounted-ssh-store \
   --arg busybox $busybox \
   --keep-going \
