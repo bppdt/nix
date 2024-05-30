@@ -10,7 +10,7 @@ enableFeatures mounted-ssh-store
   --extra-experimental-features mounted-ssh-store \
   --arg busybox $busybox \
   --out-link $TEST_ROOT/result-from-mounted-remote \
-  --store 'mounted-ssh-ng://localhost?remote-program=nix daemon')
+  --store 'mounted-ssh-ng://localhost')
 
 (! cat $TEST_ROOT/result-from-mounted-remote/hello | grepQuiet 'Hello World!') || \
   fail "Shouldn't have built because one derivation is failing"
@@ -21,7 +21,7 @@ enableFeatures mounted-ssh-store
   --arg busybox $busybox \
   --keep-going \
   --out-link $TEST_ROOT/result-from-mounted-remote-new \
-  --store 'mounted-ssh-ng://localhost?remote-program=nix daemon')
+  --store 'mounted-ssh-ng://localhost')
 
 (cat $TEST_ROOT/result-from-mounted-remote-new/hello | grepQuiet 'Hello World!') || \
 fail "Should have built despite the errors because of '--keep-going'"
